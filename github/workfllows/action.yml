@@ -1,0 +1,7 @@
+jobs:
+  echo-job:
+    runs-on: self-hosted
+    steps:
+      -name: echo-text
+       run: echo "Hello cloud gurus"
+
