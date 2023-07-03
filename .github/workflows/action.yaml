@@ -4,7 +4,26 @@ on: push
 
 jobs:
   init :
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - run: echo 'Hello cloud gurus'
-      - run: echo $HOSTNAME
+      - name: Checkout code
+        uses: actions/checut@v2
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name : Install libraries
+        run: |
+             cd function
+             python -m pip install --upgrade pip
+             if [ -f requirements.txt]; then pip install -r requirements.txt -t .; fi
+      - name: Create zip bundle
+        run: |
+             cd function
+             zip -r ../${{ github.sha }}.zip .
+      - name: Archieve artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Zipped bundle
+          path: ${{ github.sha }}.zip
+
