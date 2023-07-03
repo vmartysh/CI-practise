@@ -1,7 +1,10 @@
+name: Custom runner
+
+on: push
+
 jobs:
-  echo-job:
+  init :
     runs-on: self-hosted
     steps:
-      -name: echo-text
-       run: echo "Hello cloud gurus"
-
+      -run: echo "Hello cloud gurus"
+      -run: echo $HOSTNAME
