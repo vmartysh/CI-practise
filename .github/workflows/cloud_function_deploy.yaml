@@ -24,7 +24,8 @@ jobs:
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
       with:
-        workload_identity_provider: ${{ secrets.GCP_WL_PROVIDER }}
+        workload_identity_provider: 'https://iam.googleapis.com/projects/35212339715/locations/global/workloadIdentityPools/githubactions/providers/github'
+        #${{ secrets.GCP_WL_PROVIDER }}
         service_account: ${{ secrets.GCP_GHA_SA }}
 
     - id: 'deploy'
