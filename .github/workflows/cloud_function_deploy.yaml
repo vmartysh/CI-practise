@@ -2,8 +2,8 @@ name: Cloud functions deploy
 
 on:
   push:
-  branches:
-    - main
+    branches:
+      - main
 jobs:
   job_id:
     runs-on: 'ubuntu-latest'
