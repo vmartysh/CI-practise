@@ -6,7 +6,7 @@ def sample_access_secret_version():
 
     # Initialize request argument(s)
     request = secretmanager_v1.AccessSecretVersionRequest(
-        name="projects/35212339715/secrets/sftp-secret/versions/1",
+        name="projects/35212339715/secrets/sftp-secret/versions/latest",
     )
 
     # Make the request
