@@ -18,7 +18,7 @@ jobs:
       uses: 'google-github-actions/auth@v1'
       with:
         workload_identity_provider: ${{ secrets.GCP_WL_PROVIDER }}
-        service_account: ${{ secrets.GCP_HA_SA }}
+        service_account: ${{ secrets.GCP_GHA_SA }}
 
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloud-functions@v1'
