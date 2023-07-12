@@ -1,9 +1,14 @@
-name: Custom runner
+name: Pipline runner
 
-on: push
+on:
+  pull_request:
+  branches:
+    - main
+
 
 jobs:
-  init :
+  build :
+  name: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -26,4 +31,7 @@ jobs:
         with:
           name: Zipped bundle
           path: ${{ github.sha }}.zip
+  deploy:
+  name: deploy
+    needs: build
 
