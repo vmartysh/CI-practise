@@ -29,11 +29,14 @@ jobs:
         service_account: ${{ secrets.GCP_GHA_SA }}
 
     - id: 'deploy'
-      uses: 'google-github-actions/deploy-cloud-functions@v1'
+      uses: 'google-github-actions/deploy-cloud-functions@v1.0.1'
       with:
         name: 'sftp'
         runtime: 'python39'
+        region: europe-west1
+
 
     # Example of using the output
     - id: 'test'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
+
