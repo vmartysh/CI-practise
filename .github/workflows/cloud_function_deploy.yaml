@@ -19,7 +19,7 @@ jobs:
       name: Create zip bundle
       run: |
            cd python_app
-           zip -r ./${{ github.sha }}.zip .
+           zip -r ./my_function.zip ..
 
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
