@@ -34,6 +34,7 @@ jobs:
         name: 'sftp'
         runtime: 'python39'
         region: europe-west1
+        source_dir: ./python_app/main.py
 
 
     # Example of using the output
