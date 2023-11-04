@@ -11,7 +11,7 @@ jobs:
     steps:
     - id: dirs-output
       uses: 'actions/checkout@v4'
-      run: |
+    - run: |
            ls -d */ | cut -f1 -d'/'
   
   test_matrix:
