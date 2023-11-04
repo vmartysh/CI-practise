@@ -16,11 +16,13 @@ jobs:
     - run: |
             arr-json=$(ls  -d */ | jq -R | jq -s -c)
             echo $arr-json
-            #echo  "dirs=$arr-json" >> "$GITHUB_OUTPUT"
+            echo  "dirs=$arr-json" >> "$GITHUB_OUTPUT"
   
   test_matrix:
     runs-on: 'ubuntu-latest'
     needs: dir_listing
+    env:
+      DIRS: ${{needs.dir_listing.outputs.dirlist}}  
     #environment: prod
     strategy:
       matrix:
@@ -33,4 +35,4 @@ jobs:
     - id: output
       run: |
            echo ${{matrix.list}} 
-           echo ${{ fromJson(needs.dir_listing.outputs.dirlist)}}
+           echo $DIRS
