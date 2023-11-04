@@ -16,7 +16,7 @@ jobs:
   
   test_matrix:
     runs-on: 'ubuntu-latest'
-    environment: prod
+    #environment: prod
     strategy:
       matrix:
         list: ['stepone', 'steptwo', 'stepthree']
