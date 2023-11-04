@@ -8,8 +8,9 @@ on:
 jobs:
   job_id:
     runs-on: 'ubuntu-latest'
-    matrix:
-      list: ['stepone', 'steptwo', 'stepthree']
+    strategy
+      matrix:
+        list: ['stepone', 'steptwo', 'stepthree']
     permissions:
       contents: 'read'
       id-token: 'write'
