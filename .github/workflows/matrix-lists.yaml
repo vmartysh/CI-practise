@@ -17,7 +17,7 @@ jobs:
             #arr-json=$(ls  -d */ | jq -R | jq -s -c)
             #echo $arr-json
             #echo  "dirs=$(ls  -d */ | jq -R | jq -s -c)" >> "$GITHUB_OUTPUT"
-            echo  "dirs=Hello!" >> "$GITHUB_OUTPUT"
+            echo  "dirs=1" >> "$GITHUB_OUTPUT"
 
   
   test_matrix:
