@@ -12,10 +12,11 @@ jobs:
     - id: dirs-output
       uses: 'actions/checkout@v4'
     - run: |
-           ls -d */ | cut -f1 -d'/'
+          echo  $(ls -d */ | cut -f1 -d'/') >> $GITHUB_OUTPUT
   
   test_matrix:
     runs-on: 'ubuntu-latest'
+    needs: dir_listing
     #environment: prod
     strategy:
       matrix:
@@ -26,4 +27,6 @@ jobs:
 
     steps:
     - id: output
-      run: echo ${{matrix.list}}
+      run: |
+           echo ${{matrix.list}} 
+           echo ${{needs.dir_listing.outputs}}
