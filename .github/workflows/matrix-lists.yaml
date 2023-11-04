@@ -9,9 +9,9 @@ jobs:
   dir_listing:
     runs-on: 'ubuntu-latest'
     steps:
-    - id: dirs_output
-       uses: 'actions/checkout@v4'
-       run: |
+    - id: dirs-output
+      uses: 'actions/checkout@v4'
+      run: |
            ls -d */ | cut -f1 -d'/'
   
   test_matrix:
