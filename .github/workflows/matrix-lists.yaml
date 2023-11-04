@@ -8,11 +8,13 @@ on:
 jobs:
   dir_listing:
     runs-on: 'ubuntu-latest'
+    outputs:
+      dirlist: ${{ steps.dirs-output.outputs.dirs }}
     steps:
     - id: dirs-output
       uses: 'actions/checkout@v4'
     - run: |
-          echo  $(ls -d */ | cut -f1 -d'/') >> $GITHUB_OUTPUT
+          echo  "dirs=$(ls -d */ | cut -f1 -d'/')" >> $GITHUB_OUTPUT
   
   test_matrix:
     runs-on: 'ubuntu-latest'
@@ -29,4 +31,4 @@ jobs:
     - id: output
       run: |
            echo ${{matrix.list}} 
-           echo ${{needs.dir_listing.outputs}}
+           echo ${{needs.dir_listing.outputs.dirlist}}
