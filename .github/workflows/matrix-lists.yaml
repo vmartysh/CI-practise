@@ -1,4 +1,4 @@
-name: Cloud functions deploy
+name: Matrix variable play
 
 on:
   workflow_dispatch:
