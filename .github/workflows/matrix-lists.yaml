@@ -8,7 +8,9 @@ on:
 jobs:
   dir_listing:
     runs-on: 'ubuntu-latest'
-    run: |
+    steps:
+    - id: dirs_output
+      run: |
            ls -d */ | cut -f1 -d'/'
   
   test_matrix:
