@@ -13,8 +13,11 @@ jobs:
     steps:
     - id: dirs-output
       uses: 'actions/checkout@v4'
-    - run: |
-          echo  "dirs=$(ls -d */ | cut -f1 -d'/')" >> $GITHUB_OUTPUT
+    - id: test
+      uses: mathiasvr/command-output@v2.0.0
+      with: 
+        run: |
+              echo  "dirs=$(ls -d */ | cut -f1 -d'/')" >> $GITHUB_OUTPUT
   
   test_matrix:
     runs-on: 'ubuntu-latest'
@@ -31,4 +34,4 @@ jobs:
     - id: output
       run: |
            echo ${{matrix.list}} 
-           echo ${{needs.dir_listing.outputs.dirlist}}
+           echo ${{needs.dir_listing.test.stdout}}
