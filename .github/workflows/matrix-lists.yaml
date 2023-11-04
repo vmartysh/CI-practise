@@ -10,7 +10,8 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
     - id: dirs_output
-      run: |
+       uses: 'actions/checkout@v4'
+       run: |
            ls -d */ | cut -f1 -d'/'
   
   test_matrix:
