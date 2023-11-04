@@ -6,9 +6,10 @@ on:
     branches:
       - main
 jobs:
-  job_id:
+  test_matrix:
     runs-on: 'ubuntu-latest'
-    strategy
+    environement: prod
+    strategy:
       matrix:
         list: ['stepone', 'steptwo', 'stepthree']
     permissions:
