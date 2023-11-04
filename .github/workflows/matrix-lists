@@ -1,1 +1,19 @@
+name: Cloud functions deploy
 
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  job_id:
+    runs-on: 'ubuntu-latest'
+    matrix:
+      list: ['stepone', 'steptwo', 'stepthree']
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - id: output
+      run: echo ${{matrix.list}}
