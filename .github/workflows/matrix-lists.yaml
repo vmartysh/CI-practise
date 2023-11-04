@@ -19,13 +19,14 @@ jobs:
             #echo  "dirs=$(ls  -d */ | jq -R | jq -s -c)" >> "$GITHUB_OUTPUT"
             #echo  "dirs=1" >> "$GITHUB_OUTPUT"
     - id: print
-      run: echo ${{steps.dirs-output.outputs.dirlist}} 
+      name: print
+      run: echo ${{steps.dirs-output.outputs.dirs}} 
 
   test_matrix:
     runs-on: 'ubuntu-latest'
     needs: dir_listing
     env:
-      DIRS: ${{ needs.dir_listing.outputs.dirlist }}  
+      DIRS: ${{ needs.dir_listing.outputs.dirs }}  
     #environment: prod
     #strategy:
     #  matrix:
@@ -38,4 +39,4 @@ jobs:
     - id: output
       run: |
            #echo ${{ matrix.list }} 
-           echo ${{ needs.dir_listing.outputs.dirlist }}
+           echo ${{ needs.dir_listing.outputs.dirs }}
