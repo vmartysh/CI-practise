@@ -18,8 +18,9 @@ jobs:
             #echo $arr-json
             #echo  "dirs=$(ls  -d */ | jq -R | jq -s -c)" >> "$GITHUB_OUTPUT"
             echo  "dirs=1" >> "$GITHUB_OUTPUT"
-
-  
+    - id: print
+      run: echo ${{steps.dirs-output.outputs.dirlist}} 
+       
   test_matrix:
     runs-on: 'ubuntu-latest'
     needs: dir_listing
