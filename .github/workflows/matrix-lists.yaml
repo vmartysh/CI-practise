@@ -29,9 +29,9 @@ jobs:
     needs: dir_listing
      
     #environment: prod
-    #strategy:
-    #  matrix:
-    #    list: ['stepone', 'steptwo', 'stepthree']
+    strategy:
+      matrix:
+        list: ${{ fromJSON(needs.dir_listing.outputs.output1)}}
     
     steps:
     - env:
