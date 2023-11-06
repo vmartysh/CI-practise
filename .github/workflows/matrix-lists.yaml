@@ -40,7 +40,8 @@ jobs:
            #echo ${{ matrix.list }} 
            echo $OUTPUT1
      
-    - name: Setup gh cli
-      uses: ksivamuthu/actions-setup-gh-cli@v2
+    - name: setup-gh
+      uses: wusatosi/setup-gh@v1.1
+       
     - run: gh release list
        
