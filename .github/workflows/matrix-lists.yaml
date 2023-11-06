@@ -9,7 +9,7 @@ jobs:
   dir_listing:
     runs-on: 'ubuntu-latest'
     outputs:
-      dirlist: ${{ steps.dirs-output.outputs.dirs }}
+      output1: ${{ steps.dirs-output.outputs.dirs }}
     steps:
     - id: dirs-output
       uses: 'actions/checkout@v4'
@@ -20,7 +20,7 @@ jobs:
             #echo  "dirs=1" >> "$GITHUB_OUTPUT"
     - id: print
       name: print
-      run: echo ${{steps.dirs-output.outputs.dirlist}} 
+      run: echo ${{steps.dirs-output.outputs.output1}} 
 
   test_matrix:
     runs-on: 'ubuntu-latest'
@@ -30,14 +30,11 @@ jobs:
     #strategy:
     #  matrix:
     #    list: ['stepone', 'steptwo', 'stepthree']
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
+    
     steps:
     - env:
-        DIRLIST: ${{ needs.dir_listing.outputs.dirlist }} 
+        OUTPUT1: ${{needs.dir_listing.outputs.output1}} 
       id: output
       run: |
            #echo ${{ matrix.list }} 
-           echo $DIRLIST
+           echo $OUTPUT1
