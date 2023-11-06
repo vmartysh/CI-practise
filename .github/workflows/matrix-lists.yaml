@@ -43,5 +43,5 @@ jobs:
     - name: setup-gh
       uses: wusatosi/setup-gh@v1.1
        
-    - run: gh release list
+    - run: echo $(gh release list)
        
