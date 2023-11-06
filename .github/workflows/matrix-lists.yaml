@@ -35,6 +35,12 @@ jobs:
         OUTPUT1: ${{ needs.dir_listing.outputs.output1 }} 
       id: output
       name: Output 
+      #if: github.event_name != 'push'
       run: |
            #echo ${{ matrix.list }} 
            echo $OUTPUT1
+     
+    - name: Setup gh cli
+      uses: ksivamuthu/actions-setup-gh-cli@v2
+      run: gh release list
+       
