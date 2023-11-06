@@ -12,8 +12,8 @@ jobs:
       output1: ${{ steps.dirs-output.outputs.dirs }}
     steps:
     - id: dirs-output
-      uses: 'actions/checkout@v4'
-    - run: echo  "dirs=1" >> "$GITHUB_OUTPUT"
+      #uses: 'actions/checkout@v4'
+      run: echo  "dirs=1" >> "$GITHUB_OUTPUT"
             #arr-json=$(ls  -d */ | jq -R | jq -s -c)
             #echo $arr-json
             #echo  "dirs=$(ls  -d */ | jq -R | jq -s -c)" >> "$GITHUB_OUTPUT"
