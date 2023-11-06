@@ -20,7 +20,7 @@ jobs:
             #echo  "dirs=1" >> "$GITHUB_OUTPUT"
     - id: print
       name: print
-      run: echo ${{steps.dirs-output.outputs.output1}} 
+      run: echo ${{ steps.dirs-output.outputs.dirs }} 
 
   test_matrix:
     runs-on: 'ubuntu-latest'
@@ -33,8 +33,9 @@ jobs:
     
     steps:
     - env:
-        OUTPUT1: ${{needs.dir_listing.outputs.output1}} 
+        OUTPUT1: ${{ needs.dir_listing.outputs.output1 }} 
       id: output
+      name: Output 
       run: |
            #echo ${{ matrix.list }} 
            echo $OUTPUT1
