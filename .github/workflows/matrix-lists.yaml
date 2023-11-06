@@ -40,4 +40,4 @@ jobs:
       id: output
       run: |
            #echo ${{ matrix.list }} 
-           echo #DIRLIST
+           echo $DIRLIST
