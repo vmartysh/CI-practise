@@ -42,5 +42,5 @@ jobs:
      
     - name: Setup gh cli
       uses: ksivamuthu/actions-setup-gh-cli@v2
-      run: gh release list
+    - run: gh release list
        
