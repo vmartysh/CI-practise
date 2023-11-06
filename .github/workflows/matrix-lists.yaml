@@ -43,5 +43,5 @@ jobs:
     - name: setup-gh
       uses: wusatosi/setup-gh@v1.1
        
-    - run: echo $(gh release list)
+    - run: echo $(gh release list --exclude-drafts --exclude-pre-releases -L 2|grep Latest|cut  -f3)
        
