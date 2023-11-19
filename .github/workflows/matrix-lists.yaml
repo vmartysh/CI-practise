@@ -12,36 +12,38 @@ jobs:
       output1: ${{ steps.dirs-output.outputs.dirs }}
     steps:
     - id: checkout
-      uses: 'actions/checkout@v4' 
+      uses: 'actions/checkout@v4'
 
     - id: dirs-output
       run: echo  "dirs=$(ls -d */ | sed 's/\/$//' | jq -R | jq -s -c)" >> "$GITHUB_OUTPUT"
-            
+
     - id: print
       name: print
-      run: echo ${{ steps.dirs-output.outputs.dirs }} 
+      run: echo ${{ steps.dirs-output.outputs.dirs }}
 
   test_matrix:
     runs-on: 'ubuntu-latest'
     needs: dir_listing
-     
+
     #environment: prod
     strategy:
       matrix:
         list: ${{ fromJSON(needs.dir_listing.outputs.output1)}}
-    
+
     steps:
     - env:
-        OUTPUT1: ${{ needs.dir_listing.outputs.output1 }} 
+        OUTPUT1: ${{ needs.dir_listing.outputs.output1 }}
       id: output
-      name: Output 
+      name: Output
       #if: github.event_name != 'push'
       run: |
-           #echo ${{ matrix.list }} 
+           #echo ${{ matrix.list }}
            echo $OUTPUT1
-     
+           echo $OUTPUT1 >> $GITHUB_STEP_SUMMARY
+           echo "### My super Summary!" >> $GITHUB_STEP_SUMMARY
+
     - name: setup-gh
       uses: wusatosi/setup-gh@v1.1
-       
+
     - run: echo $(gh release list --exclude-drafts --exclude-pre-releases -L 2|grep Latest|cut  -f3)
-       
+
