@@ -1,7 +1,7 @@
 name: Detect changes
 
 on:
-  pull_request:
+  push:
     branches:
      - main
 
@@ -36,7 +36,7 @@ jobs:
       uses: vmartysh/CI-practise/.github/workflows/deploy.yaml@main
       with:
           env_value: 'dev'
-          matrix_value: ${{ needs.changed_files.outputs.dirs }}
+          matrix_value: ${{ fromJson(needs.changed_files.outputs.dirs) }}
 
 
 
