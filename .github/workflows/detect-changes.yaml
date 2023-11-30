@@ -30,7 +30,7 @@ jobs:
               echo  ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
 
 
-        - uses: CI-practise/.github/workflows/deploy.yaml@main
+        - uses: ./.github/workflows/deploy.yaml@main
           with:
             env_value: 'dev'
             matrix_value: ${{steps.changed-files.outputs}}
