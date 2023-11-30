@@ -5,7 +5,7 @@ on:
       env_value:
         required: true
         type: string
-     matrix_value:
+      matrix_value:
         required: true
         type: string
 jobs:
