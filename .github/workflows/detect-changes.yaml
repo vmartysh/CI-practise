@@ -27,8 +27,8 @@ jobs:
             escape_json: false
             files_ignore: '.github'
         - run: |
-              for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
-              echo "$file was changed"
+              echo  ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+
 
 
 
