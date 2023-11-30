@@ -25,7 +25,7 @@ jobs:
             json: true
             quotepath: false
             escape_json: false
-            files_ignore: '.github'
+            files_ignore: .github/**
         - run: |
               echo  ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
 
