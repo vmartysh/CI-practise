@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
         matrix:
-            folders: ${{ inputs.matrix_value }}
+            folders: ${{ fromJson(inputs.matrix_value) }}
     steps:
       - name: Print inputs
         run: |
