@@ -30,6 +30,11 @@ jobs:
               echo  ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
 
 
+        - uses: ./deploy.yaml
+          with:
+            env_value: 'dev'
+            matrix_value: ${{steps.changed-files.outputs}}
+
 
 
 
