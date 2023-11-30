@@ -29,11 +29,13 @@ jobs:
         - run: |
               echo  ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
 
+    call_deploy:
+      needs: changed_files
+      uses: vmartysh/CI-practise/.github/workflows/deploy.yaml@main
+      with:
+          env_value: 'dev'
+          matrix_value: ${{ needs.changed_files.steps.changed-files.outputs.all_changed_and_modified_files }}
 
-        - uses: vmartysh/CI-practise/.github/workflows/deploy.yaml@main
-          with:
-            env_value: 'dev'
-            matrix_value: ${{steps.changed-files.outputs}}
 
 
 
