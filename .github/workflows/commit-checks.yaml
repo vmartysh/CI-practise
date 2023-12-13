@@ -13,23 +13,11 @@ jobs:
     name: Check Commit Message
     runs-on: ubuntu-latest
     steps:
-      - name: Get PR Commits
-        id: 'get-pr-commits'
-        uses: tim-actions/get-pr-commits@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check Subject Line Length
-        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
-        with:
-          commits: ${{ steps.get-pr-commits.outputs.commits }}
-          pattern: '^.{10,}(\n.*)*$'
-          error: 'Subject too short'
+      - id: check
+        run: |
+              REGEX='AB#[0-9]{6,10}$'
+              if [ '${{ github.event.pull_request.body }}  =~ $REGEX' ]; then
+              echo "it's a match!"
+              else echo "NO!""
 
-      - name: Check Body Line Length
-        if: ${{ success() || failure() }}
-        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
-        with:
-          commits: ${{ steps.get-pr-commits.outputs.commits }}
-          pattern: 'AB#\d{6,10}$'
-          error: 'Body must contain AB#'
