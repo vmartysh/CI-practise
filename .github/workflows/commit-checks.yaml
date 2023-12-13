@@ -16,8 +16,10 @@ jobs:
 
       - id: check
         run: |
-              REGEX='AB#[0-9]{6,10}$'
-              if [[ "${{ github.event.pull_request.body }}" =~ $REGEX ]]; then
+              TITLE='^.{13,72}$'
+              BODY='AB#[0-9]{6,10}$'
+
+              if [[ "${{ github.event.pull_request.title }}" =~ $TITLE || "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
                 echo "it's a match!"
               else
                 echo "NO!"
