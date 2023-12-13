@@ -1,0 +1,19 @@
+name: Checking the commit messages and PR names/titles
+
+on:
+  push:
+    branches-ignore:
+    - main
+
+
+jobs:
+  check-commit-message:
+    name: Check Commit Message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Commit Type
+        uses: gsactions/commit-message-checker@v2
+        with:
+          pattern: 'AB#\d{6,10}$'
+          flags: 'gm'
+          error: 'Your commit message must contain an ADO item ID in "AB#ItemID" format without spaces'
