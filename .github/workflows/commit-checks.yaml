@@ -1,9 +1,11 @@
-name: Checking the commit messages and PR names/titles
-
+name: 'Commit Message Check'
 on:
-  push:
-    branches-ignore:
-    - main
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
 
 
 jobs:
@@ -11,9 +13,23 @@ jobs:
     name: Check Commit Message
     runs-on: ubuntu-latest
     steps:
-      - name: Check Commit Type
-        uses: gsactions/commit-message-checker@v2
+      - name: Get PR Commits
+        id: 'get-pr-commits'
+        uses: tim-actions/get-pr-commits@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check Subject Line Length
+        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
+        with:
+          commits: ${{ steps.get-pr-commits.outputs.commits }}
+          pattern: '^.{10,}(\n.*)*$'
+          error: 'Subject too short'
+
+      - name: Check Body Line Length
+        if: ${{ success() || failure() }}
+        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
+        with:
+          commits: ${{ steps.get-pr-commits.outputs.commits }}
           pattern: 'AB#\d{6,10}$'
-          flags: 'gm'
-          error: 'Your commit message must contain an ADO item ID in "AB#ItemID" format without spaces'
+          error: 'Body must contain AB#'
