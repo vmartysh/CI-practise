@@ -17,7 +17,7 @@ jobs:
       - id: check
         run: |
               TITLE='^.{13,72}$'
-              BODY='AB#[0-9]{6,10}$'
+              BODY='AB#[0-9]{6,10}'
 
               if [[ "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
                 echo "it's a match!"
