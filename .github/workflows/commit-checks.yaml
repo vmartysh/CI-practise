@@ -16,7 +16,7 @@ jobs:
 
       - id: check
         run: |
-              REGEX='AB\#[0-9]{6,10}$'
+              REGEX='AB#[0-9]{6,10}$'
               if [ ${{ github.event.pull_request.body }}  =~ $REGEX ]; then
                 echo "it's a match!"
               else
