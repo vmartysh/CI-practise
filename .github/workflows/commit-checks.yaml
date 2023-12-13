@@ -22,7 +22,7 @@ jobs:
               if [[ ! "${{ github.event.pull_request.title }}" =~ $BODY && "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
                 echo "it's a match!"
               else
-                echo "NO!"
+                echo "NO!" >> "$GIRHUB_OUTPUT"
                 exit 1
               fi
 
