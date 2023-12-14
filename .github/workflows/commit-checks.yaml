@@ -23,10 +23,10 @@ jobs:
               TITLE='^.{13,72}$'
               BODY='AB#[0-9]{6,10}'
 
-              if [[ "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
-                echo "result=0" >> "$GIRHUB_OUTPUT"
+              if [[ ! "${{ github.event.pull_request.title }}" =~ $BODY && "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
+                echo "result=0" >> "$GITHUB_OUTPUT"
               else
-                echo "result=1" >> "$GIRHUB_OUTPUT"
+                echo "result=1" >> "$GITHUB_OUTPUT"
                 exit 1
               fi
 
