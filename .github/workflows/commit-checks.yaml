@@ -43,6 +43,6 @@ jobs:
         with:
           message: |
                     Incorrect PR title or body! :wave:
-                    <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="50">
+                    <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="350">
           reactions: eyes
 
