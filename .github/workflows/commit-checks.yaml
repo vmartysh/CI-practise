@@ -43,8 +43,8 @@ jobs:
         with:
           message: |
                     ### Incorrect PR title or body! :wave:
-                    Please make sure you have your ADO item ID added to PR body in AB#87978 format.
-                    And it is not present in your PR title which contains a meaningfull description (not less than 13 symbols).
-                    <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="250">
+                    Please make sure you have your ADO item ID added to PR body in AB#87978 format (no whitespace).
+                    And it is not present in your PR title containing a meaningfull description (not less than 13 symbols).
+                    <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="150">
           reactions: eyes
 
