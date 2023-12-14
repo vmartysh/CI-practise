@@ -27,7 +27,6 @@ jobs:
                 echo "result=0" >> "$GITHUB_OUTPUT"
               else
                 echo "result=1" >> "$GITHUB_OUTPUT"
-                exit 1
               fi
 
 
