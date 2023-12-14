@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+    outputs:
+      res: ${{ steps.check.outputs.result}}
     steps:
 
       - id: check
@@ -22,14 +24,15 @@ jobs:
               BODY='AB#[0-9]{6,10}'
 
               if [[ "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
-                echo "it's a match!"
+                echo "result=0" >> "$GIRHUB_OUTPUT"
               else
-                echo "NO!" >> "$GIRHUB_OUTPUT"
+                echo "result=1" >> "$GIRHUB_OUTPUT"
                 exit 1
               fi
 
 
   pr_comment:
+    if: ${{ needs.check-commit-message.outputs.res == 0}}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
