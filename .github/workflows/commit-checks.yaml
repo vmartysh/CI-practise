@@ -34,10 +34,11 @@ jobs:
     permissions:
       pull-requests: write
     name: PR comment with reactions
-  steps:
-      uses: thollander/actions-comment-pull-request@v2
-      with:
-        message: |
-          Hello world ! :wave:
-        reactions: eyes, rocket
+    steps:
+      - id: pr
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+                    Hello world ! :wave:
+          reactions: eyes, rocket
 
