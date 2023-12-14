@@ -12,6 +12,8 @@ jobs:
   check-commit-message:
     name: Check Commit Message
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
 
       - id: check
@@ -25,11 +27,17 @@ jobs:
                 echo "NO!" >> "$GIRHUB_OUTPUT"
                 exit 1
               fi
+
+
   pr_comment:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     name: PR comment with reactions
-    uses: thollander/actions-comment-pull-request@v2
-    with:
-      message: |
-        Hello world ! :wave:
-      reactions: eyes, rocket
+  steps:
+      uses: thollander/actions-comment-pull-request@v2
+      with:
+        message: |
+          Hello world ! :wave:
+        reactions: eyes, rocket
 
