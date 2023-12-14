@@ -43,5 +43,6 @@ jobs:
         with:
           message: |
                     Incorrect PR title or body! :wave:
+                    <img src="https://giphy.com/gifs/this-is-fine-2UCt7zbmsLoCXybx6t" width=350>
           reactions: eyes
 
