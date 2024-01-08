@@ -16,5 +16,6 @@ jobs:
                 echo "TRUE"
               else
                 echo "FALSE"
+              fi
 
 
