@@ -13,7 +13,7 @@ jobs:
               echo $NAME
               echo "$NAME"_mem
               NAME2=vars."$NAME"
-              echo ${{ 'vars.$(NAME)' }}
+              echo ${{ '$(NAME2)' }}
               if [ ${{ '$NAME2' }} == ${{ null }} ]; then
                 echo "TRUE"
               else
