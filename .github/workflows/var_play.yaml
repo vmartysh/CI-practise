@@ -12,7 +12,7 @@ jobs:
               NAME="$( echo ${{ vars.cloud_functions }} | sed -r 's/-+/_/g' )"_mem
               echo $NAME
               echo "$NAME"_mem
-              if [ ${{ 'vars.''$NAME' }} == ${{ null}} ]; then
+              if [ ${{ 'vars.$NAME' }} == ${{ null}} ]; then
                 echo "TRUE"
               else
                 echo "FALSE"
