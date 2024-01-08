@@ -9,7 +9,7 @@ jobs:
     steps:
     - id: 'nameextract'
       run: |
-              NAME=$( "echo ${{ vars.cloud_functions }} | sed -r 's/-+/_/g'"_mem )
+              NAME="$( echo ${{ vars.cloud_functions }} | sed -r 's/-+/_/g' )"_mem
               echo $NAME
               echo "$NAME"_mem
 
