@@ -1,0 +1,16 @@
+name: "Var play"
+
+on:
+    workflow_dispatch:
+jobs:
+  vars:
+    runs-on: [ubuntu-latest]
+    #permissions:
+    steps:
+    - id: 'nameextract'
+      run: |
+              NAME=$( echo ${{ vars.cloud_functions }} | sed -r 's/-+/_/g' )
+              echo $NAME
+              echo "$NAME"_mem
+
+
