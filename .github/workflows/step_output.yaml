@@ -11,6 +11,7 @@ jobs:
         run: |
             echo Success!
             exit 1
+            if ( always )
       - id: step2 
         run: |
             echo Failed!
