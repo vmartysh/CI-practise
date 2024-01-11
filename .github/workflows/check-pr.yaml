@@ -8,8 +8,8 @@ on:
      - synchronize
 
 jobs:
-  check_pr_title_body:
-    name: PR title & body check 
+  pr_check_and_test:
+    name: PR check and test
     runs-on: [self-hosted, linux, external-k8s]
     permissions:
       pull-requests: write
@@ -17,6 +17,7 @@ jobs:
     steps:
 
     - id: check
+      name: Title/body check
       run: |
             TITLE='^.{13,72}$'
             BODY='AB#[0-9]{6,10}'
@@ -31,7 +32,7 @@ jobs:
     
    
     - id: pr_comment
-      name: Incorrect PR content comment
+      name: Incorrect PR content
       if: ${{ failure() }} 
       uses: thollander/actions-comment-pull-request@v2
       with:
@@ -44,6 +45,7 @@ jobs:
 
              #- name: SonarQube Scan
     - id: 'sonarscan'
+      name: Sonarqube scanning
       if: ${{ steps.check.conclusion }} == "success" 
       run: echo HOORAY!
 
