@@ -5,18 +5,19 @@ on:
 jobs:
   stepjob:
     runs-on: ubuntu-latest
-    continue-on-error: true
+    #continue-on-error: true
 
     steps:
       - id: step1
         run: |
             echo Success!
-            exit 0
+            exit 1
             if ( always )
       - id: step2 
+        if: failure()
         run: |
             echo Failed!
-            exit 1
+            exit 0
     
   outputjob:
     runs-on: ubuntu-latest
