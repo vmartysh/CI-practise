@@ -10,7 +10,7 @@ on:
 jobs:
   pr_check_and_test:
     name: PR check and test
-    runs-on: [self-hosted, linux, external-k8s]
+    runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     
