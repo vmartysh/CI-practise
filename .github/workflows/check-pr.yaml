@@ -13,8 +13,7 @@ jobs:
     runs-on: [self-hosted, linux, external-k8s]
     permissions:
       pull-requests: write
-    outputs:
-      res: ${{ steps.check.outputs.result}}
+    
     steps:
 
     - id: check
