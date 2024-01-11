@@ -5,6 +5,7 @@ on:
 jobs:
   stepjob:
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - id: step1
