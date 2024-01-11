@@ -1,0 +1,21 @@
+name: Reusable Deploy
+on:
+  workflow_call:
+    inputs:
+      env_value:
+        required: true
+        type: string
+      matrix_value:
+        required: true
+        type: string
+jobs:
+  the_job:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            folders: ${{ fromJson(inputs.matrix_value) }}
+    steps:
+      - name: Print inputs
+        run: |
+            echo "input_var: ${{ inputs.env_value }}"
+            echo "another_input_var: ${{ inputs.matrix_value }}"

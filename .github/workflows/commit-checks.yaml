@@ -1,0 +1,50 @@
+name: 'PR title and body check'
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+
+
+jobs:
+  check-commit-message:
+    name: Check Commit Message
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    outputs:
+      res: ${{ steps.check.outputs.result}}
+    steps:
+
+      - id: check
+        run: |
+              TITLE='^.{13,72}$'
+              BODY='AB#[0-9]{6,10}'
+
+              if [[ ! "${{ github.event.pull_request.title }}" =~ $BODY && "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
+                echo "result=0" >> "$GITHUB_OUTPUT"
+              else
+                echo "result=1" >> "$GITHUB_OUTPUT"
+              fi
+
+
+  pr_comment:
+    if: ${{ needs.check-commit-message.outputs.res == 1}}
+    runs-on: ubuntu-latest
+    needs: check-commit-message
+    permissions:
+      pull-requests: write
+    name: PR comment with reactions
+    steps:
+      - id: pr
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+                    ### Incorrect PR title or body!
+                    Please make sure you have your ADO item ID added to PR body in AB#87978 format (no whitespace).
+                    And it is not present in your PR title containing a meaningfull description (not less than 13 symbols).
+                    <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="150">
+          reactions: eyes
+

@@ -1,0 +1,55 @@
+name: 'PR content check'
+on:
+  pull_request:
+    types:
+     - opened
+     - edited
+     - reopened
+     - synchronize
+
+jobs:
+  check_pr_title_body:
+    name: PR title & body check 
+    runs-on: [self-hosted, linux, external-k8s]
+    permissions:
+      pull-requests: write
+    
+    steps:
+
+    - id: check
+      run: |
+            TITLE='^.{13,72}$'
+            BODY='AB#[0-9]{6,10}'
+
+            if [[ ! "${{ github.event.pull_request.title }}" =~ $BODY && "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
+             # echo "result=0" >> "$GITHUB_OUTPUT"
+             exit 0
+            else
+             # echo "result=1" >> "$GITHUB_OUTPUT"
+             exit 1
+            fi
+    
+   
+    - id: pr_comment
+      name: Incorrect PR content comment
+      if: ${{ failure() }} 
+      uses: thollander/actions-comment-pull-request@v2
+      with:
+        message: |
+                ### Incorrect PR title or body!
+                Please make sure you have your ADO item ID added to PR body in AB#87978 format (no whitespace).
+                And it is not present in your PR title containing a meaningfull description (not less than 13 symbols).
+                <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="150">
+        reactions: eyes
+
+             #- name: SonarQube Scan
+    - id: 'sonarscan'
+      if: ${{ steps.check.conclusion }} == "success" 
+      run: echo HOORAY!
+
+  #call_detect_changes:
+  #    if: ${{ needs.check_pr_title_body.outputs.res == 0 }}
+  ##    name: Detecting changes
+   #   needs: check_pr_title_body
+   #   uses: bayer-int/csci/.github/workflows/detect-changes.yaml@main
+
