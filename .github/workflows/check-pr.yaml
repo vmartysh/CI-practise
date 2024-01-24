@@ -43,11 +43,12 @@ jobs:
                 <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="150">
         reactions: eyes
 
-             #- name: SonarQube Scan
-    - id: 'sonarscan'
-      name: Sonarqube scanning
-      if: ${{ steps.check.conclusion }} == "success" 
-      run: echo HOORAY!
+            
+     - name: Print GitHub context
+       run: echo "$GITHUB_CONTEXT"
+       env:
+         GITHUB_CONTEXT: ${{ toJson(github) }}
+       
 
   #call_detect_changes:
   #    if: ${{ needs.check_pr_title_body.outputs.res == 0 }}
