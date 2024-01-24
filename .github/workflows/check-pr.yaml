@@ -44,10 +44,10 @@ jobs:
         reactions: eyes
 
             
-     - name: Print GitHub context
-       run: echo "$GITHUB_CONTEXT"
-       env:
-         GITHUB_CONTEXT: ${{ toJson(github) }}
+    - name: Print GitHub context
+      run: echo "$GITHUB_CONTEXT"
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
        
 
   #call_detect_changes:
