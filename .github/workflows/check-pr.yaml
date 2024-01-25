@@ -48,6 +48,8 @@ jobs:
       run: echo "$GITHUB_CONTEXT"
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
+
+    - run: echo $GITHUB_PATH
        
 
   #call_detect_changes:
