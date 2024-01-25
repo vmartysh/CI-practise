@@ -51,7 +51,7 @@ jobs:
 
     - run: |
             echo $(pwd) >> $GITHUB_PATH
-            echo $GITHUB_PATH
+            echo $PATH
        
 
   #call_detect_changes:
