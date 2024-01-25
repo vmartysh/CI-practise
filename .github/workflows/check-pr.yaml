@@ -50,7 +50,7 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
 
     - run: |
-            echo $(pwd) >> $GITHUB_PATH
+            echo "/super" >> $GITHUB_PATH
             echo $PATH
        
 
