@@ -49,9 +49,8 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
 
-    - run: |
-            echo "/super" >> $GITHUB_PATH
-            echo $PATH
+    - run: echo "/super" >> $GITHUB_PATH
+    - run: echo $PATH
        
 
   #call_detect_changes:
