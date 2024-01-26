@@ -14,6 +14,9 @@ jobs:
   pr_check_and_test:
     name: PR check and test
     runs-on: ubuntu-latest
+    env: 
+      ENV: ${{ (github.event_name == 'pull_request' && 'dev') || (github.event_name == 'push' && 'qa') }} 
+    environment: $ENV   
     permissions:
       pull-requests: write
     
