@@ -15,42 +15,46 @@ jobs:
       pull-requests: write
     
     steps:
+      - id: step
+        env: 
+          ENV: ${{ (github.event_name == 'pull_request' && 'dev') || (github.event_name == 'push' && 'qa') }}  
+        run: echo $ENV
+        
+    # - id: check
+    #   name: Title/body check
+    #   run: |
+    #         TITLE='^.{13,72}$'
+    #         BODY='AB#[0-9]{6,10}'
 
-    - id: check
-      name: Title/body check
-      run: |
-            TITLE='^.{13,72}$'
-            BODY='AB#[0-9]{6,10}'
-
-            if [[ ! "${{ github.event.pull_request.title }}" =~ $BODY && "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
-             # echo "result=0" >> "$GITHUB_OUTPUT"
-             exit 0
-            else
-             # echo "result=1" >> "$GITHUB_OUTPUT"
-             exit 1
-            fi
+    #         if [[ ! "${{ github.event.pull_request.title }}" =~ $BODY && "${{ github.event.pull_request.title }}" =~ $TITLE && "${{ github.event.pull_request.body }}" =~ $BODY ]]; then
+    #          # echo "result=0" >> "$GITHUB_OUTPUT"
+    #          exit 0
+    #         else
+    #          # echo "result=1" >> "$GITHUB_OUTPUT"
+    #          exit 1
+    #         fi
     
    
-    - id: pr_comment
-      name: Incorrect PR content
-      if: ${{ failure() }} 
-      uses: thollander/actions-comment-pull-request@v2
-      with:
-        message: |
-                ### Incorrect PR title or body!
-                Please make sure you have your ADO item ID added to PR body in AB#87978 format (no whitespace).
-                And it is not present in your PR title containing a meaningfull description (not less than 13 symbols).<br/>
-                <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="150">
-        reactions: eyes
+    # - id: pr_comment
+    #   name: Incorrect PR content
+    #   if: ${{ failure() }} 
+    #   uses: thollander/actions-comment-pull-request@v2
+    #   with:
+    #     message: |
+    #             ### Incorrect PR title or body!
+    #             Please make sure you have your ADO item ID added to PR body in AB#87978 format (no whitespace).
+    #             And it is not present in your PR title containing a meaningfull description (not less than 13 symbols).<br/>
+    #             <img src="https://media1.tenor.com/m/1Y42Mgr57SUAAAAC/this-is-fine.gif" width="150">
+    #     reactions: eyes
 
             
-    - name: Print GitHub context
-      run: echo "$GITHUB_CONTEXT"
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
+    # - name: Print GitHub context
+    #   run: echo "$GITHUB_CONTEXT"
+    #   env:
+    #     GITHUB_CONTEXT: ${{ toJson(github) }}
 
-    - run: echo $(pwd) >> $GITHUB_PATH
-    - run: echo $PATH
+    # - run: echo $(pwd) >> $GITHUB_PATH
+    # - run: echo $PATH
        
 
   #call_detect_changes:
