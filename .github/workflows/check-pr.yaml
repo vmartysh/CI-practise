@@ -21,10 +21,10 @@ jobs:
       pull-requests: write
     
     steps:
-      - id: step
-        env: 
-          ENV: ${{ (github.event_name == 'pull_request' && 'dev') || (github.event_name == 'push' && 'qa') }}  
-        run: echo $ENV
+      # - id: step
+      #   env: 
+      #     ENV: ${{ (github.event_name == 'pull_request' && 'dev') || (github.event_name == 'push' && 'qa') }}  
+      #   run: echo $ENV
         
     # - id: check
     #   name: Title/body check
@@ -56,7 +56,7 @@ jobs:
             
       - name: Print GitHub context
         run: | 
-             echo "$GITHUB_CONTEXT"
+             
              echo ${{ vars.ENV }}
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
