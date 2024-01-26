@@ -58,8 +58,8 @@ jobs:
         run: | 
              
              echo ${{ vars.ENV }}
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+        # env:
+        #   GITHUB_CONTEXT: ${{ toJson(github) }}
         
 
     # - run: echo $(pwd) >> $GITHUB_PATH
