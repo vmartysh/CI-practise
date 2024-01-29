@@ -22,6 +22,8 @@ jobs:
 
     - id: conf_var_output
       run: |
-            echo ${{ vars.myvar }}  
-            echo ${{ vars.MYVAR }} 
+            echo ${{ vars.myvar }}_MEM  
+            echo "${{ vars.MYVAR }}"_MEM 
+            echo ${{ vars.MYVAR }}"_MEM" 
+            echo "${{ vars.MYVAR }}_MEM" 
    
