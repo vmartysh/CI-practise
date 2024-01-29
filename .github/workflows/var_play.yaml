@@ -21,7 +21,7 @@ jobs:
               fi
 
     - id: conf_var_output
-      if: vars.
+      
       env:
         cf_name: 'myvar'
       run: |
