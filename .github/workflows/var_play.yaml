@@ -29,8 +29,9 @@ jobs:
              echo $name 
              echo ${{ env.name }} 
     - id: step2
+      if: ${{ env.name }} == ''
+      run: echo true
       
-      run: echo ${{'${{ env.name }}'}}
      
   
       
