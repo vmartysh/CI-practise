@@ -25,7 +25,7 @@ jobs:
 
     - id: conf_var_output
       run: |
-             name="vars."$name"_MEM"
+             name="vars."$cf_name"_MEM"
              echo $name
              echo ${{ vars.MYVAR_MEM }}
      
