@@ -27,7 +27,7 @@ jobs:
         name: $var_name
       run: |
             #echo $cf_name      
-            var_name= "vars."$cf_name"_NEN"
+            var_name= "vars."$cf_name"_MEM"
             
             echo ${{ env.name }}
            
