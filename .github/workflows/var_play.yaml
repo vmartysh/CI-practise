@@ -26,7 +26,7 @@ jobs:
         cf_name: 'MYVAR'
         name: $var_name
       run: |     
-            var_name= "vars."$cf_name"_MEM"
+            export var_name= "vars."$cf_name"_MEM"
             
             #echo $name
            
