@@ -29,7 +29,8 @@ jobs:
              echo $name 
              echo ${{ env.name }} 
     - id: step2
-      run: echo ${{ env.name }}
+      
+      run: echo ${{'${{ env.name }}'}}
      
   
       
