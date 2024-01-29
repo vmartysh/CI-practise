@@ -7,18 +7,18 @@ jobs:
     runs-on: [ubuntu-latest]
     #permissions:
     steps:
-    - id: 'nameextract'
-      run: |
-              NAME="$( echo ${{ vars.cloud_functions }} | sed -r 's/-+/_/g' )"_mem
-              echo $NAME
-              echo "$NAME"_mem
-              NAME2=vars."$NAME"
-              echo ${{ '$(NAME2)' }}
-              if [ ${{ '$NAME2' }} == ${{ null }} ]; then
-                echo "TRUE"
-              else
-                echo "FALSE"
-              fi
+    # - id: 'nameextract'
+    #   run: |
+    #           NAME="$( echo ${{ vars.cloud_functions }} | sed -r 's/-+/_/g' )"_mem
+    #           echo $NAME
+    #           echo "$NAME"_mem
+    #           NAME2=vars."$NAME"
+    #           echo ${{ '$(NAME2)' }}
+    #           if [ ${{ '$NAME2' }} == ${{ null }} ]; then
+    #             echo "TRUE"
+    #           else
+    #             echo "FALSE"
+    #           fi
 
     - id: conf_var_output
       
@@ -29,6 +29,6 @@ jobs:
             #echo $cf_name      
             var_name= "vars."$cf_name"_MEM"
             
-            echo ${{ env.name }}
+            echo ${{ 'env.name' }}
            
    
