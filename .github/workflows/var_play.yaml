@@ -23,16 +23,16 @@ jobs:
     - id: conf_var_output
       
       env:
-        cf_name: 'myvar'
+        cf_name: 'MYVAR'
         name: $var_name
       run: |
-            echo $cf_name      
-            var_name= "vars."$cf_name"_mem"
+            #echo $cf_name      
+            var_name= "vars."$cf_name"_NEN"
             
             echo ${{ env.name }}
-           # MEM=[[ ${{ $var_name }}  != '' ]] && ${{ $var_name }} || 256
+           
 
            
             
-
+           MYVAR_MEM
    
