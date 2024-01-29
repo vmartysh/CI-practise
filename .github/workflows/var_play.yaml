@@ -24,11 +24,12 @@ jobs:
       
       env:
         cf_name: 'myvar'
+        name: $var_name
       run: |
             echo $cf_name      
             var_name= "vars."$cf_name"_mem"
-            echo vars.$cf_name
-            echo ${{ '$var_name' }}
+            
+            echo ${{ env.name }}
            # MEM=[[ ${{ $var_name }}  != '' ]] && ${{ $var_name }} || 256
 
            
