@@ -20,4 +20,8 @@ jobs:
                 echo "FALSE"
               fi
 
-
+    - id: conf_var_output
+      run: |
+            echo ${{ vars.myvar }}  
+            echo ${{ vars.MYVAR }} 
+   
