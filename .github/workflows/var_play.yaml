@@ -21,14 +21,15 @@ jobs:
               fi
 
     - id: conf_var_output
+      if: vars.
+      env:
+        cf_name: 'myvar'
       run: |
-            echo ${{ vars.myvar }}_MEM  
-            echo vars."${{ vars.MYVAR }}"_MEM 
-            echo ${{ vars.MYVAR }}"_MEM" 
-            echo "${{ vars.MYVAR }}_MEM" 
-            export var_name=${{vars.myvar}}
-            MEM=[[ ${{ "$var_name" }}  != '' ]] && ${{ "$var_name" }} || 256
-            echo $MEM
+            echo $cf_name      
+            echo "vars."$cf_name
+            echo vars.$cf_name
 
+           
+            
 
    
