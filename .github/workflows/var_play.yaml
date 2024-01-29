@@ -1,7 +1,10 @@
 name: "Var play"
 
 on:
+    push:
     workflow_dispatch:
+env:
+  cf_name: MYVAR
 jobs:
   vars:
     runs-on: [ubuntu-latest]
@@ -21,7 +24,10 @@ jobs:
     #           fi
 
     - id: conf_var_output
-      run: echo ${{ vars.MYVAR_MEM }}
+      run: |
+             name="vars."$name"_MEM_
+             echo $name
+             echo ${{ vars.MYVAR_MEM }}
      
   
       
