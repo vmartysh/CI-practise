@@ -27,7 +27,7 @@ jobs:
             echo ${{ vars.MYVAR }}"_MEM" 
             echo "${{ vars.MYVAR }}_MEM" 
             export var_name=${{vars.myvar}}
-            MEM=[[ ${{ $var_name" }}  != '' ]] && ${{ "$var_name" }} || 256
+            MEM=[[ ${{ "$var_name" }}  != '' ]] && ${{ "$var_name" }} || 256
             echo $MEM
 
 
