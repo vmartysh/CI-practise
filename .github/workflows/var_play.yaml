@@ -31,8 +31,4 @@ jobs:
             
             echo ${{ env.name }}
            
-
-           
-            
-           MYVAR_MEM
    
