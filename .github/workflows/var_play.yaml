@@ -24,7 +24,7 @@ jobs:
       
       env:
         cf_name: 'MYVAR'
-        name: $var_name
+        name: '$var_name'
       run: |     
             export var_name= "vars."$cf_name"_MEM"
             
