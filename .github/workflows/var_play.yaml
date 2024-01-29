@@ -28,6 +28,6 @@ jobs:
       run: |     
             var_name= "vars."$cf_name"_MEM"
             
-            echo ${{ 'env.name' }}
+            echo $name
            
    
