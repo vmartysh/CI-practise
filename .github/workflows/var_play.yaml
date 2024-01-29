@@ -21,16 +21,9 @@ jobs:
     #           fi
 
     - id: conf_var_output
-      env:
-        cf_name: 'MYVAR'
-        
-        
-      run: |     
-            echo "var_name="vars."$cf_name"_MEM"" >> $GITHUB_ENV
-            name: $var_name
-            echo $name
-    - id: step2
-      run: echo ${{ env.var_name }}
+      run: echo ${{ vars.MYVAR_MEM }}
+     
+  
       
            
            
