@@ -32,7 +32,7 @@ jobs:
     - id: step2
       
       run: |
-            echo env.name
+            echo ${{ env.name}}
             echo ${{ !env.name }}
 
      
