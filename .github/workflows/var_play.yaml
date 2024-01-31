@@ -32,7 +32,8 @@ jobs:
     - id: step2
       
       run: |
-            echo     ${{ steps.conf_var_output.outputs.name }}        
+            a=${{ steps.conf_var_output.outputs.name }} 
+            echo     ${{ ($(a)) }}        
 
      
   
