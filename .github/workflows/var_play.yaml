@@ -25,14 +25,14 @@ jobs:
 
     - id: conf_var_output
       run: |
-             echo name="vars."$cf_name"_MEM" >> $GITHUB_ENV
+             echo name="vars."$cf_name"_MEM" >> $GITHUB_OUTPUT
              name="vars."$cf_name"_MEM"
              echo $name
              
     - id: step2
       
       run: |
-            echo "${env.name}"            
+            echo     #{{ steps.conf_var_outpu.outputs.name }}        
 
      
   
