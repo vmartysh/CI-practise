@@ -32,7 +32,7 @@ jobs:
     - id: step2
       
       run: |
-            echo     #{{ steps.conf_var_outpu.outputs.name }}        
+            echo     ${{ steps.conf_var_outpu.outputs.name }}        
 
      
   
