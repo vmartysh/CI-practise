@@ -25,7 +25,7 @@ jobs:
 
     - id: conf_var_output
       run: |
-             echo name="vars."$cf_name"_MEM" >> $GITHUB_OUTPUT
+             echo "name="vars."$cf_name"_MEM""" >> $GITHUB_OUTPUT
              name="vars."$cf_name"_MEM"
              echo $name
              
