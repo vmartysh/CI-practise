@@ -26,11 +26,14 @@ jobs:
     - id: conf_var_output
       run: |
              echo name="vars."$cf_name"_MEM" >> $GITHUB_ENV
-             echo $name 
-             echo ${{ env.name }} 
+             name="vars."$cf_name"_MEM"
+             echo $name
+             
     - id: step2
-      #if: ${{ env.name }} == ''
-      run: echo ${{ format( '{0}', env.name) }}
+      
+      run: |
+            echo env.name
+            echo ${{ !env.name }}
 
      
   
