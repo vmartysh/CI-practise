@@ -33,7 +33,7 @@ jobs:
       
       run: |
             echo ${{ env.name}}
-            echo "${{ env.name }}"
+            echo "${{ "${{env.name}}" }}"
 
      
   
