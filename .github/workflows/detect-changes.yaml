@@ -27,9 +27,9 @@ jobs:
             json: true
             quotepath: false
             escape_json: false
-            #files_ignore: .github/**
-            files_ignore_from_source_file: './files_ignore.txt'
-            files_ignore_from_source_file_separator: ','
+            files_ignore: {.github,different-app}/**
+            #files_ignore_from_source_file: './files_ignore.txt'
+            #files_ignore_from_source_file_separator: ','
 
         - run: |
               echo  ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
