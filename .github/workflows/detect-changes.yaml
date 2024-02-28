@@ -28,7 +28,7 @@ jobs:
             quotepath: false
             escape_json: false
             #files_ignore: .github/**
-            files_ignore_from_source_file: './files_ignore.txt'
+            files_ignore_from_source_file: 'files_ignore.txt'
             files_ignore_from_source_file_separator: ','
 
         - run: |
