@@ -24,4 +24,5 @@ jobs:
           run: echo "$OUTPUT1 $OUTPUT2"
 
         run: ls -d */ | sed 's/\/$//' | jq -R | jq -s -c >> $GITHUB_OUTPUT
+        
   
