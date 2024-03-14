@@ -19,6 +19,8 @@ jobs:
       needs: job1
       steps:
         - id: step1
-          run: ls -d */ | sed 's/\/$//' | jq -R | jq -s -c >> $GITHUB_OUTPUT
+          run: |
+                 cd /
+                 ls -d */ | sed 's/\/$//' | jq -R | jq -s -c >> $GITHUB_OUTPUT
 
   
