@@ -21,6 +21,6 @@ jobs:
         - id: step1
           run: |
                  cd /
-                 ls -d */ | sed 's/\/$//' | jq -R | jq -s -c >> $GITHUB_OUTPUT
+                 ls -d */ --ignore='bin'| sed 's/\/$//' | jq -R | jq -s -c >> $GITHUB_OUTPUT
 
   
