@@ -36,7 +36,7 @@ runs:
         version: '>= 363.0.0'
 
     - name Output
-      echo ${{ inputs.vm }}
+      echo ${{ INPUT.VM }}
     
     # - name: Stop avapi service        
     #   run: |
