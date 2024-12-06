@@ -24,6 +24,6 @@ jobs:
                  cd /
                  ls -d */ |grep -v 'bin'| sed 's/\/$//' | jq -R | jq -s -c >> $GITHUB_STEP_SUMMARY
         - name: Custom action
-          uses: '.github/actions/vm-files.yaml'
+          uses: .github/actions
 
   
