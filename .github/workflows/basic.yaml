@@ -1,8 +1,8 @@
-name: BASIC
+name: Basic workflow
 
 on:
     workflow_dispatch:
-    
+
 jobs:
     job1:
       runs-on: ubuntu-latest
@@ -24,6 +24,6 @@ jobs:
                  cd /
                  ls -d */ |grep -v 'bin'| sed 's/\/$//' | jq -R | jq -s -c >> $GITHUB_STEP_SUMMARY
         - name: Custom action
-          uses: .github/actions/vm-files.yaml
+          uses: '.github/actions/vm-files.yaml'
 
   
