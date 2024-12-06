@@ -36,7 +36,7 @@ runs:
         version: '>= 363.0.0'
 
     - name Output
-      run: echo ${{ inputs.vm }}
+      run: echo "VM_anme=${{ inputs.vm }} >> GITHUB_OUTPUT"
       shell: bash
     
     # - name: Stop avapi service        
