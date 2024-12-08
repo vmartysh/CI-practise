@@ -35,7 +35,7 @@ runs:
       with:
         version: '>= 363.0.0'
 
-    - name Output
+    - name: Output
       run: echo "VM_anme=test >> GITHUB_OUTPUT"
       shell: bash
     #run: echo "VM_anme=${{ inputs.vm }} >> GITHUB_OUTPUT"
