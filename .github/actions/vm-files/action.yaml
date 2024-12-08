@@ -36,9 +36,9 @@ runs:
         version: '>= 363.0.0'
 
     - name Output
-      run: echo "VM_anme=${{ inputs.vm }} >> GITHUB_OUTPUT"
+      run: echo "VM_anme=test >> GITHUB_OUTPUT"
       shell: bash
-    
+    #run: echo "VM_anme=${{ inputs.vm }} >> GITHUB_OUTPUT"
     # - name: Stop avapi service        
     #   run: |
     #           gcloud compute ssh ubuntu@csci-clamav-vm --zone=europe-west1-b --command 'sudo systemctl stop avapi'
