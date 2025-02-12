@@ -1,10 +1,13 @@
 name: Parse cf config
-on: workflow_dispatch
+on: 
+  workflow_dispatch
 
-jobs::
+jobs:
   Parse_config:
+    runs-on: ubuntu-latest
     steps:
-  
+    - id: checkout
+      uses: 'actions/checkout@v4'
     - id: get_cf_config
       run: |
         # Function to set configuration with default
@@ -28,7 +31,7 @@ jobs::
           [ingress]="internal-only"
         )
     
-        config_file="${{ matrix.cloud_functions }}/${{ matrix.cloud_functions }}.conf"
+        config_file="config.conf"
         if [ -f "$config_file" ]; then
           source "$config_file"
           for key in "${!defaults[@]}"; do
@@ -39,3 +42,8 @@ jobs::
             echo "$key=${defaults[$key]}" >> $GITHUB_OUTPUT
           done
         fi
+
+
+    - id: output
+      run: echo ${{ steps.get_cf_config.outputs}} >> $GITHUB_STEP_SUMMARY
+         
