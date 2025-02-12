@@ -1,0 +1,40 @@
+name: Parse cf config
+
+jobs::
+  Parse_config:
+    steps:
+  
+    - id: get_cf_config
+      run: |
+        # Function to set configuration with default
+        set_config() {
+          local var_name=$1
+          local value=$2
+          local default_value=$3
+    
+          if [ -z "$value" ]; then
+            echo "$var_name=$default_value" >> $GITHUB_OUTPUT
+          else
+            echo "$var_name=$value" >> $GITHUB_OUTPUT
+          fi
+        }
+    
+        # Default values
+        declare -A defaults=(
+          [memory]="256MB"
+          [timeout]=60
+          [gen]=1
+          [ingress]="internal-only"
+        )
+    
+        config_file="${{ matrix.cloud_functions }}/${{ matrix.cloud_functions }}.conf"
+        if [ -f "$config_file" ]; then
+          source "$config_file"
+          for key in "${!defaults[@]}"; do
+            set_config "$key" "${!key}" "${defaults[$key]}"
+          done
+        else
+          for key in "${!defaults[@]}"; do
+            echo "$key=${defaults[$key]}" >> $GITHUB_OUTPUT
+          done
+        fi
