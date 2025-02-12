@@ -51,5 +51,6 @@ jobs:
             echo ${{ steps.get_cf_config.outputs.timeout}} >> $GITHUB_STEP_SUMMARY
             echo ${{ steps.get_cf_config.outputs.gen}} >> $GITHUB_STEP_SUMMARY
             echo ${{ steps.get_cf_config.outputs.ingress}} >> $GITHUB_STEP_SUMMARY
+            echo ${{ steps.get_cf_config.outputs.cpu}} >> $GITHUB_STEP_SUMMARY
 
          
