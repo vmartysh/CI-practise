@@ -29,6 +29,7 @@ jobs:
           [timeout]=60
           [gen]=1
           [ingress]="internal-only"
+          [cpu]="10"
         )
     
         config_file="config.conf"
